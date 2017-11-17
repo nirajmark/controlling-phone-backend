@@ -17,9 +17,21 @@
 
 **Thought**  
 
-**Concept** gcm-node
+**Concept** gcm-node, routes
 
 **Todo**
 <ol>
-    <li> Create POST api which will be called from outside </li>
+    <li> host the api using aws-lamda</li>
+</ol>
+
+# controlling-phone-backend
+###Date : 17th nov,2017
+
+**Thought**  created api to add user to db and update gcm token
+
+**Concept** gcm-node, routes
+
+**Todo**
+<ol>
+    <li> Host the backend using heroku</li>
 </ol>

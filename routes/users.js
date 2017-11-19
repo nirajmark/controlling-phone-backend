@@ -10,10 +10,15 @@ router.post('/createUser', async (req, res, next) => {
   const existingUser = await User.findOne({firebaseId:req.body.firebaseId});
   if (existingUser) {
       console.log('user already exist in db');
-      res.send('User Already present');
+      res.send(existingUser);
   }
-  const user = await new User({firebaseId:req.body.firebaseId,email:req.body.email}).save();
-  res.send('user created successfully');
+  const sentUser = req.body;
+  const user = await new User(sentUser).save();
+  res.send(user);
+});
+
+router.get('/', (req, res, next) => {
+  res.send({"email":"sample email", "firebaseId":"sample firebaseId","gcmToken":"sample gcmToken"});
 });
 
 router.post('/updateGCMToken', async (req, res, next) => {
@@ -23,10 +28,10 @@ router.post('/updateGCMToken', async (req, res, next) => {
       console.log('user already exist in db');
       existingUser.gcmToken = req.body.gcmToken
       const user = await existingUser.save();
-      res.send('User updated successfully');
+      res.send(existingUser);
   }
-  res.sendStatus(404);
-  res.send('user not found');
+  res.json(404);
+  res.send(existingUser);
 });
 
 
